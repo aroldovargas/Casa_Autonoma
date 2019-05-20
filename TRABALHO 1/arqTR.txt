@@ -1,2 +1,2 @@
-1:('TERMOMETRO', 'Quarto1', '25')
-2:('TERMOMETRO', 'Quarto2', '28')
+1:('TERMOMETRO', 'sala', '22')
+2:('TERMOMETRO', 'cozinha', '22')

@@ -16,6 +16,7 @@ dicLA = {}
 dicAC = {}
 dicSP = {}
 dicTR = {}
+dicTR_alterado = {}
 
 
 def leArq():
@@ -25,6 +26,36 @@ def leArq():
     arq.close()
 
     return txt
+
+def verificaTemperatura(dic_ar,dic_termometro):
+
+	registro = open("Registro.txt","a")
+
+	lista_temp = []
+	new_dic_temp = {}
+	temperatura = ""
+	comodo = ""
+	if dic_termometro != {} and dic_ar != {}:
+		for i in dic_termometro.keys():
+			valor_termometro = dic_termometro[i]
+			temperatura = valor_termometro[2]
+			comodo = valor_termometro[1]
+			for j in dic_ar.keys():
+				valor_ar = dic_ar[j]
+				if valor_termometro[1].lower() == valor_ar[1].lower():
+					if int(valor_termometro[2]) > 27:
+						temperatura = '22'
+						comodo = valor_termometro[1]
+						registro.write("Temperatura de termometro "+str(i)+" atualizada de acordo com AR" + "\n")
+			new_dic_temp[i]=('TERMOMETRO',comodo,temperatura)
+	else:
+		registro.close()
+		return	dic_termometro
+	
+	registro.close()
+	return (new_dic_temp)
+
+
 
 
 def verificaPresenca(dic):
@@ -101,6 +132,8 @@ def conectado(con, cliente):
 	print ('Conectado por', cliente)
 
 	while True:
+		registro = open("Registro.txt","a")
+
 		msg = con.recv(1024)
 		if not msg: break
 		tipo_dispositivo = msg.decode()
@@ -109,7 +142,7 @@ def conectado(con, cliente):
 			id_dispositivo = gerarIDTM(lstTM)
 			ambiente = input("Insira o ambiente onde a TOMADA "+id_dispositivo+" foi inserida: ")
 			con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("TOMADA "+id_dispositivo+" inserida com sucesso!")).encode())
-
+			registro.write((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("TOMADA "+id_dispositivo+" inserida em " + ambiente + "\n")))
 			dicTM[id_dispositivo] = ["TOMADA",ambiente]
 
 		if msg.decode() == "SIMULAÇÃO DO CONSUMO DAS TOMADAS":
@@ -123,6 +156,7 @@ def conectado(con, cliente):
 			id_dispositivo = gerarIDLA(lstLA)
 			ambiente = input("Ambiente onde a LAMPADA "+id_dispositivo+" foi inserida: ")
 			con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("LAMPADA "+id_dispositivo+" inserida com sucesso!")).encode())
+			registro.write((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("LAMPADA "+id_dispositivo+" inserida em " + ambiente+ "\n")))
 
 			dicLA[id_dispositivo] = ["LAMPADA",ambiente,"desligada"]
 
@@ -130,16 +164,23 @@ def conectado(con, cliente):
 			id_dispositivo = gerarIDAC(lstAC)
 			ambiente = input("Ambiente onde o AR CONDICIONADO "+id_dispositivo+" foi inserido: ")
 			con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("AR CONDICIONADO "+id_dispositivo+" inserido com sucesso!")).encode())
+			registro.write((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("AR CONDICIONADO "+id_dispositivo+" inserido em " + ambiente+ "\n")))
 
 			msg = con.recv(1024)
 			ac = msg.decode().split(",")
+			print(ac)
 			id = ac[0]
 			time = ac[1]
-			temPadrao = ac[2]
+			estado = ac[2]
 
-			print("ID: "+id+"     HORA: "+time+"     MSG: "+temPadrao)
+			print("ID: "+id+"     HORA: "+time+"     MSG: "+estado)
 
-			dicAC[id_dispositivo] = ["AR CONDICIONADO",ambiente,temPadrao]      
+			if int(datetime.now().strftime("%H")) >= 18:
+				dicAC[id_dispositivo] = ["AR CONDICIONADO",ambiente,"ligado"]
+				registro.write("Estado de AR CONDICIONADO "+str(id_dispositivo)+" atualizado para ligado de acordo com horario programado" + "\n")
+      
+			else:
+				dicAC[id_dispositivo] = ["AR CONDICIONADO",ambiente,estado]
 
 		if msg.decode() == "SENSOR DE PRESENÇA":
 			#Gera um ID sequencial para o dispositivo
@@ -155,6 +196,7 @@ def conectado(con, cliente):
 			presenca = sp[2]
 			print("ID: "+id+"     HORA: "+time+"     MSG: "+presenca)
 			con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("SENSOR DE PRESENÇA "+id_dispositivo+" inserido com sucesso!")).encode())
+			registro.write((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("SENSOR DE PRESENÇA "+id_dispositivo+" inserido em " + ambiente+ "\n")))
 
 			dicSP[id_dispositivo] = ["SENSOR DE PRESENÇA",ambiente,presenca]
          
@@ -166,6 +208,7 @@ def conectado(con, cliente):
 			ambiente = input("Ambiente onde o TERMOMETRO "+id_dispositivo+" foi inserido: ")
 			#Envia mensagem para o dispositivo informando seu ID
 			con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("TERMOMETRO "+id_dispositivo+" inserido com sucesso!")).encode())
+			registro.write((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+("TERMOMETRO "+id_dispositivo+" inserido em " + ambiente+ "\n")))
 
 			msg = con.recv(1024)
 			tr = msg.decode().split(",")
@@ -174,13 +217,14 @@ def conectado(con, cliente):
 			temperatura = tr[2]
 			print("ID: "+id+"     HORA: "+time+"     MSG: "+temperatura)
 			dicTR[id_dispositivo] = ["TERMOMETRO",ambiente,temperatura]
-
           
 		#print (cliente, tipo_dispositivo)
+		registro.close()
 
 		#Salva os dicionarios com as informações dos dispositivos em seus respectivos arquivos de texto
 		if dicTR:
-			salvaDic(dicTR,"arqTR.txt")
+			dicTR_alterado = verificaTemperatura(dicAC,dicTR)
+			salvaDic(dicTR_alterado,"arqTR.txt")
 		if dicTM:
 			salvaDic(dicTM,"arqTM.txt")
 		if dicSP:
@@ -190,19 +234,20 @@ def conectado(con, cliente):
 		if dicLA:
 			salvaDic(dicLA,"arqLA.txt")
 			lstAmbientes = verificaPresenca(dicSP)
-			
+
+
+			'''ESTOU FAZENDO AQUI, PARA LIGAR AS LAMPADAS
 			if msg.decode() ==  "simularLA":
-				dic = ligarLampada(dicLA,lstAmbientes)			
-				novamsg =""
+				print("cheguei")
+				dic = ligarLampada(dicLA,lstAmbientes)
+				print(dic)
 				for chave in dic:
 					id_dispositivo = chave
 					estado = dic[chave][2]
-					mensag = id_dispositivo+":"+estado
-					novamsg = novamsg+"-"+mensag
+					con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+estado).encode())
+					print(id_dispositivo)
 
-				con.send((novamsg).encode())
-
-				salvaDic(dicLA,"arqLA.txt")
+				salvaDic(dicLA,"arqLA.txt")'''
 
 	
 

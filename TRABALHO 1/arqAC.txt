@@ -1,0 +1,2 @@
+1:['AR CONDICIONADO', 'sala', 'ligado']
+2:['AR CONDICIONADO', 'cozinha', 'ligado']
