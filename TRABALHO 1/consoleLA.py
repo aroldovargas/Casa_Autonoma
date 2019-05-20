@@ -26,8 +26,12 @@ def clienteLA(lista):
 
 	tcp.send(("simularLA").encode())
 	while True:
-		msg = (tcp.recv(1024)).decode().split(",")
-		print(msg)
+		msg = (tcp.recv(1024)).decode()
+		msg = msg.split("-")
+		for lampada in msg:
+			if lampada != "":
+				id,estado = lampada.split(":")
+				print("ID: "+id+"     HORA: "+(datetime.now().strftime("%d/%m/%Y %H:%M"))+"     MSG: LAMPADA"+id+" está "+estado)
 		
 
 	tcp.close()

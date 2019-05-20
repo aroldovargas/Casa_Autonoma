@@ -190,18 +190,19 @@ def conectado(con, cliente):
 		if dicLA:
 			salvaDic(dicLA,"arqLA.txt")
 			lstAmbientes = verificaPresenca(dicSP)
-			'''ESTOU FAZENDO AQUI, PARA LIGAR AS LAMPADAS
+			
 			if msg.decode() ==  "simularLA":
-				print("cheguei")
-				dic = ligarLampada(dicLA,lstAmbientes)
-				print(dic)
+				dic = ligarLampada(dicLA,lstAmbientes)			
+				novamsg =""
 				for chave in dic:
 					id_dispositivo = chave
 					estado = dic[chave][2]
-					con.send((id_dispositivo+","+(datetime.now().strftime("%d/%m/%Y %H:%M"))+","+estado).encode())
-					print(id_dispositivo)
+					mensag = id_dispositivo+":"+estado
+					novamsg = novamsg+"-"+mensag
 
-				salvaDic(dicLA,"arqLA.txt")'''
+				con.send((novamsg).encode())
+
+				salvaDic(dicLA,"arqLA.txt")
 
 	
 
