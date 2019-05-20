@@ -1,0 +1,4 @@
+1:['LAMPADA', 'Sala', 'desligada']
+2:['LAMPADA', 'Corredor', 'desligada']
+3:['LAMPADA', 'Quarto1', 'desligada']
+4:['LAMPADA', 'Quarto2', 'desligada']
