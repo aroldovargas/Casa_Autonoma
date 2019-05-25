@@ -40,11 +40,11 @@ O trabalho propõe o desafio de implementar um protocolo de gerenciamento de dis
 Ao iniciar o projeto tivemos a ideia de implementar uma interface gráfica para a visualização da simulação, ela está parcialmente terminada e é possível encontrar passo a passo em nosso repositório. Ideia que tivemos pensando em projetos posteriores que utilizassem a mesma arquitetura, e estudo próprio para capacitação da equipe. Para a implementação está sendo feita utilizando uma biblioteca para python chamada kivy, que fornece ferramentas muito práticas e rápidas para a construção de uma interface gráfica interativa com o usuário.
 <br>
 ### 3.2 Execução<br>
-    O projeto está dividido em dois processos denominados iniciação e operação. Nos topicos a seguir estão sendo explicadas a forma que os dados estão sendo estruturados.<br>
+O projeto está dividido em dois processos denominados iniciação e operação. Nos topicos a seguir estão sendo explicadas a forma que os dados estão sendo estruturados.<br>
 
 ##### Iniciação<br>
 
-    O processo de iniciação, é o processo onde se iniciam os dispositivos e suas localizações. Esse início se dá pela troca de mensagens entre o cliente do dispositivo a ser iniciado e o servidor. Os passos para o processo são:<br>
+O processo de iniciação, é o processo onde se iniciam os dispositivos e suas localizações. Esse início se dá pela troca de mensagens entre o cliente do dispositivo a ser iniciado e o servidor. Os passos para o processo são:<br>
 
 Obs: Para iniciar um cliente o servidor precisa ter sido iniciado posteriormente<br><br>
 
@@ -52,7 +52,7 @@ Obs: Para iniciar um cliente o servidor precisa ter sido iniciado posteriormente
 
 	Passo 2. Executar
 
-     Existe na pasta um executável python para iniciar o servidor e 1 cliente de cada tipo simultaneamente, executando a seguinte instrução em seu terminal:<br>
+Existe na pasta um executável python para iniciar o servidor e 1 cliente de cada tipo simultaneamente, executando a seguinte instrução em seu terminal:<br>
 	
 >python3 Iniciar.py <br><br>
 
