@@ -48,9 +48,9 @@ O processo de iniciação, é o processo onde se iniciam os dispositivos e suas 
 
 Obs: Para iniciar um cliente o servidor precisa ter sido iniciado posteriormente<br><br>
 
-Passo 1. Primeiramente abra o seu terminal ou cmd no diretório da pasta do projeto.<br>
+	Passo 1. Primeiramente abra o seu terminal ou cmd no diretório da pasta do projeto.<br>
 
-Passo 2. Executar<br>
+	Passo 2. Executar<br>
 
 Existe na pasta um executável python para iniciar o servidor e 1 cliente de cada tipo simultaneamente, executando a seguinte instrução em seu terminal:<br>
 	
@@ -78,8 +78,7 @@ Cliente para Lampadas:<br>
 Cliente para Tomadas:<br>
 
 >python3 consoleTM.py<br><br>
-
-<br>
+ 
 Cliente para Sensores de Presença:<br>
 
 >python3 consoleSP.py<br><br>
@@ -91,9 +90,7 @@ Cliente para Temperatura:<br>
 
 
 
-
-
-Passo 3. Comunicação cliente servidor.
+	Passo 3. Comunicação cliente servidor.
 
 
 1.  Cliente se conecta ao servidor e pergunta ao usuário se deseja adicionar dispositivo
