@@ -36,60 +36,58 @@ Ou utilizando uma ferramenta do git através do terminal<br>
 
 ### 3.1 Plano de Projeto<br>
 
-O trabalho propõe o desafio de implementar um protocolo de gerenciamento de dispositivos residenciais, com características conceituais de IoT (internet of things), onde o usuário (residente) tem acesso às informações em tempo real, além de interagir com o sistema, fazendo solicitações que serão explanadas em tópicos posteriores.
+O trabalho propõe o desafio de implementar um protocolo de gerenciamento de dispositivos residenciais, com características conceituais de IoT (internet of things), onde o usuário (residente) tem acesso às informações em tempo real, além de interagir com o sistema, fazendo solicitações que serão explanadas em tópicos posteriores.<br>
 Ao iniciar o projeto tivemos a ideia de implementar uma interface gráfica para a visualização da simulação, ela está parcialmente terminada e é possível encontrar passo a passo em nosso repositório. Ideia que tivemos pensando em projetos posteriores que utilizassem a mesma arquitetura, e estudo próprio para capacitação da equipe. Para a implementação está sendo feita utilizando uma biblioteca para python chamada kivy, que fornece ferramentas muito práticas e rápidas para a construção de uma interface gráfica interativa com o usuário.
+<br>
+### 3.2 Execução<br>
+O projeto está dividido em dois processos denominados iniciação e operação. Nos topicos a seguir estão sendo explicadas a forma que os dados estão sendo estruturados.<br>
 
-3.2 Execução
-O projeto está dividido em dois processos denominados iniciação e operação. Nos topicos a seguir estão sendo explicadas a forma que os dados estão sendo estruturados.
+##### Iniciação<br>
 
-Iniciação
+O processo de iniciação, é o processo onde se iniciam os dispositivos e suas localizações. Esse início se dá pela troca de mensagens entre o cliente do dispositivo a ser iniciado e o servidor. Os passos para o processo são:<br>
 
-O processo de iniciação, é o processo onde se iniciam os dispositivos e suas localizações. Esse início se dá pela troca de mensagens entre o cliente do dispositivo a ser iniciado e o servidor. Os passos para o processo são:
+Obs: Para iniciar um cliente o servidor precisa ter sido iniciado posteriormente<br><br>
 
-Obs: Para iniciar um cliente o servidor precisa ter sido iniciado posteriormente
+Passo 1. Primeiramente abra o seu terminal ou cmd no diretório da pasta do projeto.<br>
 
+Passo 2. Executar<br>
 
-
-Passo 1. Primeiramente abra o seu terminal ou cmd no diretório da pasta do projeto.
-
-Passo 2. Executar
-
-Existe na pasta um executável python para iniciar o servidor e 1 cliente de cada tipo simultaneamente, executando a seguinte instrução em seu terminal:
+Existe na pasta um executável python para iniciar o servidor e 1 cliente de cada tipo simultaneamente, executando a seguinte instrução em seu terminal:<br>
 	
-python3 Iniciar.py 
+>python3 Iniciar.py <br><br>
 
 
-Para a execução individual de servidor e clientes, serão necessárias as seguintes linhas:
+Para a execução individual de servidor e clientes, serão necessárias as seguintes linhas:<br>
+
+<br>
+Servidor: <br>
+
+>python3 server.py<br>
+<br>
+
+Cliente para Ar Condicionados:<br>
+
+>python3 consoleAC.py<br>
+<br>
+
+Cliente para Lampadas:<br>
+
+>python3 consoleLA.py<br>
+
+<br>
+Cliente para Tomadas:<br>
+
+>python3 consoleTM.py<br><br>
+
+<br>
+Cliente para Sensores de Presença:<br>
+
+>python3 consoleSP.py<br><br>
 
 
-Servidor: 
+Cliente para Temperatura:<br>
 
-python3 server.py
-
-
-Cliente para Ar Condicionados:
-
-python3 consoleAC.py
-
-
-Cliente para Lampadas:
-
-python3 consoleLA.py
-
-
-Cliente para Tomadas:
-
-python3 consoleTM.py
-
-
-Cliente para Sensores de Presença:
-
-python3 consoleSP.py
-
-
-Cliente para Temperatura:
-
-python3 consoleTR.py
+>python3 consoleTR.py<br><br>
 
 
 
