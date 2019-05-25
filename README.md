@@ -8,7 +8,7 @@ Lorran Gabriel Araújo: lorrangabriel20@gmail.com<br>
 
 ## 1.1 Objetivos¹
 
-Objetivo geral do trabalho é desenvolver uma aplicação cliente/servidor utilizando a biblioteca de programação socket na linguagem Python, versão 3.5. Os objetivos específicos do trabalho são:<br>
+<tab>Objetivo geral do trabalho é desenvolver uma aplicação cliente/servidor utilizando a biblioteca de programação socket na linguagem Python, versão 3.5. Os objetivos específicos do trabalho são:<br>
 ◦ Familiarizar-se com a programação utilizando a API socket.<br>
 ◦ Implementar um protocolo controlar um ambiente de dispositivos inteligentes para residências (smart home devices).<br>
 ◦ Enviar e receber dados em uma aplicação que utiliza a arquitetura Cliente/Servidor.<br>
