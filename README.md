@@ -13,26 +13,29 @@ Objetivo geral do trabalho é desenvolver uma aplicação cliente/servidor utili
 ◦ Implementar um protocolo controlar um ambiente de dispositivos inteligentes para residências (smart home devices).<br>
 ◦ Enviar e receber dados em uma aplicação que utiliza a arquitetura Cliente/Servidor.<br>
 
-##2.0 Preparando Espaço<br>
-###2.1 Instalação Python²
+## 2.0 Preparando Espaço<br>
+### 2.1 Instalação Python²
+
 Ubuntu Debian e derivados<br>
 >sudo apt-get update<br>
 >sudo apt-get install python3.5<br>
 
-Windows
+Windows<br>
 
-Veja mais Pagina Oficial 
+Veja mais Pagina Oficial <br>
 
 
-2.2 Baixar Repositorio 
-Ubuntu e Windows
-Pode ser baixando o arquivo compactado pelo link
-Ou utilizando uma ferramenta do git através do terminal
-git clone https://github.com/LorranGabriel/Casa_Autonoma
+### 2.2 Baixar Repositorio <br>
 
-3.0 Descrição do Projeto
+Ubuntu e Windows<br>
+Pode ser baixando o arquivo compactado pelo link<br>
+Ou utilizando uma ferramenta do git através do terminal<br>
+>git clone https://github.com/LorranGabriel/Casa_Autonoma<br>
 
-3.1 Plano de Projeto
+## 3.0 Descrição do Projeto
+
+### 3.1 Plano de Projeto<br>
+
 O trabalho propõe o desafio de implementar um protocolo de gerenciamento de dispositivos residenciais, com características conceituais de IoT (internet of things), onde o usuário (residente) tem acesso às informações em tempo real, além de interagir com o sistema, fazendo solicitações que serão explanadas em tópicos posteriores.
 Ao iniciar o projeto tivemos a ideia de implementar uma interface gráfica para a visualização da simulação, ela está parcialmente terminada e é possível encontrar passo a passo em nosso repositório. Ideia que tivemos pensando em projetos posteriores que utilizassem a mesma arquitetura, e estudo próprio para capacitação da equipe. Para a implementação está sendo feita utilizando uma biblioteca para python chamada kivy, que fornece ferramentas muito práticas e rápidas para a construção de uma interface gráfica interativa com o usuário.
 
