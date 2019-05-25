@@ -1,0 +1,2 @@
+1:['TERMOMETRO', 'Sala', '20']
+2:['TERMOMETRO', 'cozinha', '23']
