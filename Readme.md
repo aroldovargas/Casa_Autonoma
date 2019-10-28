@@ -1,4 +1,4 @@
-# Técnicas de Programação Avançada - Trabalho 2 - Ordenação
+# Técnicas de Programação Avançada - Trabalho 2 - Ordenação e Estatísticas de Ordem
 
 ### Arquivos entregues para avaliação:
 
